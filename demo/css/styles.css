@@ -1,0 +1,96 @@
+/* Import the normalize stylesheet. https://necolas.github.io/normalize.css/  
+*/
+@import "normalize.css";
+
+/* apply a natural box layout model to all elements, but allowing components to change
+http://www.paulirish.com/2012/box-sizing-border-box-ftw/; 
+*/
+
+html,body {
+  box-sizing: border-box;
+}
+*, *:before, *:after { box-sizing: inherit; }
+
+/* Set full height: http://stackoverflow.com/questions/6654958/make-body-have-100-of-the-browser-height */
+html {
+  /* body will set it's height based on its parent, which is html */
+  height: 100%;
+
+  /* set full width as well */
+  width: 100%;
+}
+body {
+  /* min-height is needed for pages that might scroll, ie they may contain _more_ than 100% of viewport height */
+  min-height: 100%;
+
+  /* needed to prevent unwanted scroll-bars */
+  margin: 0;
+  padding: 0;
+  
+  /* This is just so we can tell the body block apart from the app container */
+  background-color: gray;
+}
+
+/* Full height centered app container */
+#app-container {
+
+  /* Set block height using the viewport height unit, and force it to be full height, even if the containing content does not require it */
+  min-height: 100vh;
+
+  /* center this block for larger viewports */
+  margin: 0 auto;
+
+  /*Use max-width for better browser handling of small windows
+  http://www.w3schools.com/css/css_max-width.asp
+  */
+  max-width: 31.25em;
+
+  /* Use min-width to prevent your design from being scrunched up in tiny viewports (and instead be replaced with horizontal scroll bars) 
+  */
+  min-width: 18.75em;
+   
+  /* Add padding around your content - this is just an arbitrary number */
+  padding: 1em;
+
+
+  /* Add sufficient top padding so the fixed header doesn't cover up main content by defailt.  This value should be a calculated value (eg using calc(), sass, etc):
+  padding for this container + height of app header; Here, that is 1em + 4em */ 
+  padding-top: 5em;
+
+  /* just used to so we can tell the content block apart from the body block */
+  background-color: white;
+}
+
+
+#app-header {
+  /* fix the header to the top of the viewport. */
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  z-index:10;
+
+  /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
+  min-width: 300px;
+
+  /* just arbitrary values */
+  height: 4em;
+  padding: 1em;
+
+  /* internal layout, centered vertically - flex layout is great for this */
+  display: flex;
+  flex-flow: row nowrap;
+  align-items:center;
+
+  /* just so we can tell the header apart */
+  background-color: blue;
+  color: white;
+}
+
+#app-header h1 {
+  /* set the h1 block as the main flex block - it will fill all unused space in the block */
+  flex: 1;
+
+  /* center content inside the block */
+  text-align: center;
+}
